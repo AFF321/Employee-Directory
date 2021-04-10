@@ -26,9 +26,23 @@ getpeople = () => {
 };
 
   onSort(event, sortKey){
+    if(this.state.currentSort==="default"){
     const results = this.state.results;
     results.sort((a,b) => a.name.first.localeCompare(b.name.first))
+    this.setState({currentSort:"up"})
     this.setState({results})
+  }
+  else if(this.state.currentSort==="up"){
+    const results = this.state.results;
+    results.sort((a,b) => b.name.first.localeCompare(a.name.first))
+    this.setState({currentSort:"down"})
+    this.setState({results})
+  }else{
+    const results = this.state.results;
+    results.sort((a,b) => a.name.first.localeCompare(b.name.first))
+    this.setState({currentSort:"up"})
+    this.setState({results})
+  }
   }
 
 
