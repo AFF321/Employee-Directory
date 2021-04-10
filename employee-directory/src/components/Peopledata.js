@@ -8,7 +8,7 @@ function Peopledata(props) {
     <caption> Our Team!</caption>
     <thead>
         <th>Image</th>
-        <th > <button type="button" >
+        <th > <button type="button"onClick={e => props.onSort(e, 'first')} >
           Name
         </button></th>
         <th>Email</th>
