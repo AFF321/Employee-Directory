@@ -1,13 +1,16 @@
 import React, { Component } from "react";
 import NavTabs from "../components/NavTabs";
 import Peopledata from "../components/Peopledata";
-import API from "../util/api";
+import API from "../util/API";
 
 
 class Home extends Component{
   state={
     results:[],
-    error:""};
+    error:"",
+    key:"",
+    direction:""
+  };
 
     
 componentDidMount() {
@@ -17,16 +20,17 @@ getpeople = () => {
   API.people()
     .then(res =>
       this.setState({
-        results: res.data.message
+        results: res.data.results
        })
     )
     .catch(err => console.log(err));
 };
+
 render() {
   return (
 <div>
  <NavTabs/>
- <Peopledata />
+ <Peopledata results={this.state.results}/>
 </div>
   )}
 
